@@ -4,11 +4,10 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>插入 頭 在這</title>
+		<title>Insert title here</title>
 	</head>
 		<body>
-		
-			<a href=https://google.com >我的 JavaWeb 首頁?</a>
-	
+			<h1>今彩539 電腦選號</h1>
+			<h2 style="color : red">${lottery}</h2>
 		</body>
 </html>
