@@ -7,8 +7,17 @@
 		<title>插入 頭 在這</title>
 	</head>
 		<body>
-		
-			<a href=https://google.com >我的 JavaWeb 首頁?</a>
+			<h1>我的 JavaWeb 首頁?</h1>
+			<h2>Servlet 應用</h2>
+			<ul>
+				<li>
+					<a href="/JavaWeb/hello.zip"> HelloServlet </a>
+				</li>
+				<li>
+					<a href="/JavaWeb/lottery"> LotteryServlet </a>
+				</li>
+			</ul>
+			<a href=https://google.com ></a>
 	
 		</body>
 </html>
