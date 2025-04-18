@@ -14,7 +14,7 @@
 					<a href="/JavaWeb/hello.zip"> HelloServlet </a>
 				</li>
 				<li>
-					<a href="/JavaWeb/lottery"> LotteryServlet </a>
+					<a href="/JavaWeb/lottery"> LotteryServlet 好</a>
 				</li>
 			</ul>
 			<a href=https://google.com ></a>
