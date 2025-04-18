@@ -7,6 +7,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import util.Util;
 
 @WebServlet("/welcome")
 public class WelcomeServlet extends HttpServlet {
@@ -20,10 +21,21 @@ public class WelcomeServlet extends HttpServlet {
 		// 接收參數
 		// 例如: http://localhost:8080/JavaWeb/welcome?name=Jack
 		String name = req.getParameter("name");
+		name = (name == null || name.isEmpty())? "訪客": name;
+		String age = req.getParameter("age");
 		
-		resp.getWriter().print(name + " 歡迎光臨");
+		//檢查age 是否是數字
+		if(Util.isNumber2(age)) {
+			String message = Integer.parseInt(age)>=18 ? "成年":"未成年";
+			resp.getWriter().print(name 
+					+ " 歡迎光臨 (" + age +"歲"+ message +")");
+		}	else{resp.getWriter().print(name +" 歡迎光臨 ");}
+		
+		
+		
 		
 	}
+
 	
 	
 }
