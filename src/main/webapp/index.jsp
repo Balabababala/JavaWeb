@@ -8,7 +8,7 @@
 	</head>
 		<body>
 			<h1>我的 JavaWeb 首頁?</h1>
-			<h2>Servlet 應用</h2>
+			<h2>Servlet 應用 te</h2>
 			<ul>
 				<li>
 					<a href="/JavaWeb/hello.zip"> HelloServlet </a>(使用 Model0 [只用 Servlet 或JSP])
