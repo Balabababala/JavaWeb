@@ -44,7 +44,7 @@ public class CoffeeOrder {
 	public String getCoffeeInfo() {
 		
 		if(CoffeeOrder.coffeeTable.containsKey(type)) {
-				return  String.format("您點了一杯%s杯%s咖啡(%s) 價格:%s" ,getType(),getType(),getSugar(),CoffeeOrder.coffeeTable.get(type).get(size)
+				return  String.format("您點了一杯%s杯%s咖啡(%s) 價格:%s" ,getSize(),getType(),getSugar(),CoffeeOrder.coffeeTable.get(type).get(size)
 						);
 		}
 		return "";
