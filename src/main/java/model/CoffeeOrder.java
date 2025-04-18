@@ -10,11 +10,9 @@ public class CoffeeOrder {
 			"cappuccino"  ,Map.of("s",55,"m",80,"l",100)	
 				);
 	
-	private String type;
-	private String size;
-	private String sugar;
-	private String reSize="";
-	private String reSugar="";
+	public String type;
+	public String size;
+	public String sugar;
 	
 	public CoffeeOrder(String type,String size,String sugar) {
 		this.type=type.toLowerCase();
@@ -22,21 +20,31 @@ public class CoffeeOrder {
 		this.sugar=sugar.toLowerCase();
 	}
 	
-	public String coffeeToString() {
-		if(size.equals("s")) {
-			reSize="小";
-		}else if(size.equals("m")) {
-			reSize="中";
-		}else if(size.equals("l")) {
-			reSize="大";
-		}
-		if(sugar.equals("yes")) {
-			reSugar="加糖";
-		}else if(sugar.equals("no")) {
-			reSugar="不加糖";
-		}
+	public String getType() {
+	    if(type.equals("latte")) return "Latte";
+	    if(type.equals("mocha")) return "Mocha";
+	    if(type.equals("americano")) return "Americano";
+	    if(type.equals("cappuccino")) return "cappuccino";
+	    return "";
+	}
+	public String getSize() {
+	    if(size.equals("s")) return "小";
+	    if(size.equals("m")) return "中";
+	    if(size.equals("l")) return "大";
+	    return "";
+	}
+
+	public String getSugar() {
+	    if(sugar.equals("yes")) return "加糖";
+	    if(sugar.equals("no")) return "不加糖";
+	    return "";
+	}
+	
+	
+	public String getCoffeeInfo() {
+		
 		if(CoffeeOrder.coffeeTable.containsKey(type)) {
-				return  String.format("您點了一杯%s杯%s咖啡(%s) 價格:%s" ,reSize,type,reSugar,CoffeeOrder.coffeeTable.get(type).get(size)
+				return  String.format("您點了一杯%s杯%s咖啡(%s) 價格:%s" ,getType(),getType(),getSugar(),CoffeeOrder.coffeeTable.get(type).get(size)
 						);
 		}
 		return "";

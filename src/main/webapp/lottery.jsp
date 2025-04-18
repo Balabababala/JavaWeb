@@ -6,8 +6,8 @@
 		<meta charset="UTF-8">
 		<title>Insert title here</title>
 	</head>
-		<body>
-			<h1>今彩539 電腦選號 haha</h1>
-			<h2>${lottery}</h2>
-		</body>
+	<body>
+		<h1>今彩539 電腦選號 haha</h1>
+		<h2>${lottery}</h2>
+	</body>
 </html>
