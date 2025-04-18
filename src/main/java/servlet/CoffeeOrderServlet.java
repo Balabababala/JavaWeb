@@ -19,6 +19,11 @@ public class CoffeeOrderServlet extends HttpServlet{
 
 		resp.setCharacterEncoding("UTF-8");
 		resp.setContentType("text/html;charset=UTF-8");
+	
+		if(req.getParameter("type")==null ||req.getParameter("size")==null||req.getParameter("sugar")==null) {
+			resp.getWriter().print("你媽");	
+			return;
+		}
 		
 		String type=  req.getParameter("type");
 		String size=  req.getParameter("size");
@@ -42,10 +47,7 @@ public class CoffeeOrderServlet extends HttpServlet{
 //		if(coffeePrice.containsKey(input)) {
 //			resp.getWriter().print(String.format("您點了一杯%s杯%s咖啡(%s) 價格:%s" , size,type,(sugar.equals("yes"))?"加糖":"不加糖",coffeePrice.containsKey(input)));
 //		}
-		if(type==null ||size==null||sugar==null) {
-			resp.getWriter().print("你媽");	
-			return;
-		}
+
 		
 		CoffeeOrder coco =new CoffeeOrder(type,size,sugar);
 //		resp.getWriter().print(coco.coffeeToString());	
