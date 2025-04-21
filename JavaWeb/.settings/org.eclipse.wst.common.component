@@ -3,11 +3,11 @@
     <wb-module deploy-name="JavaWeb">
                 
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/"/>
                 
-        <property name="context-root" value="JavaWeb"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
                 
         <property name="java-output-path" value="/JavaWeb/build/classes"/>
+        <property name="context-root" value="JavaWeb"/>
             
     </wb-module>
     
