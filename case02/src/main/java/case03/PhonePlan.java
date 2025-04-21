@@ -11,11 +11,13 @@ public class PhonePlan {
 	
 	static class PhoneRule{
 		private String type ;
+		private int price; 
 		
 		private BiPredicate<Double , Double> condition;
 		
-		public PhoneRule(String type,BiPredicate <Double , Double> condition) {
+		public PhoneRule(String type,int price,BiPredicate <Double , Double> condition) {
 			this.type=type;
+			this.price=price;
 			this.condition=condition;
 		}
 		
@@ -27,12 +29,15 @@ public class PhonePlan {
 		public String getFinalType() {
 			return type;
 		}
+		public int getFinalPrice() {
+			return price;
+		}
 	}
 	
 	private static final List<PhoneRule> rules=List.of(
-			new PhoneRule("商務型",(minutes,gb)->minutes>1000 || gb>50),
-			new PhoneRule("一般用戶型",(minutes,gb)->minutes>500 || gb>10),
-			new PhoneRule("長輩節省型",(minutes,gb)->minutes<200 || gb<1)
+			new PhoneRule("商務型",1499,(minutes,gb)->minutes>1000 || gb>50),
+			new PhoneRule("一般用戶型",660,(minutes,gb)->minutes>500 && gb>10),
+			new PhoneRule("長輩節省型",200,(minutes,gb)->minutes<200 && gb<1)
 			);
 
 	public PhonePlan(Double minutes,Double gb) {
@@ -51,6 +56,15 @@ public class PhonePlan {
 				    //.map(rule -> rule.getFinalResult())
 				    .orElse("無法辨識");
 	}
+	public Integer getPhonePrice() {
+		return rules.stream()
+				    .filter(rule-> rule.matches(minutes, gb))
+				    .findFirst()
+				    .map(PhoneRule::getFinalPrice)
+				    //.map(rule -> rule.getFinalResult())
+				    .orElse(null);
+	}
+	
 	
 	public Double getMinutes() {
 		return minutes;
