@@ -13,8 +13,7 @@
 					咖啡: ${ coffeeOrder.type } <br />
 					容量: ${ coffeeOrder.size } <br />
 					含糖: ${ coffeeOrder.sugar } <br />
-					咖啡資訊: ${ coffeeOrder.coffeeInfo } <br />
-			
+					${ coffeeOrder.coffeeInfo } <br />
 			</fieldset>
 		</div>
 	</body>

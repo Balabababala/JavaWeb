@@ -11,10 +11,10 @@
 		<h2>Servlet 應用 te</h2>
 		<ul>
 			<li>
-				<a href="/JavaWeb/hello.zip"> HelloServlet </a>(使用 Model0 [只用 Servlet 或JSP])
+				<a href="/JavaWeb/hello.zip"> HelloServlet 123</a>(使用 Model0 [只用 Servlet 或JSP])
 			</li>
 			<li>
-				<a href="/JavaWeb/lottery"> LotteryServlet </a>(使用 Model1 [Servlet+JSP])
+				<a href="/JavaWeb/lottery"> LotteryServlet 123</a>(使用 Model1 [Servlet+JSP])
 			</li>
 		</ul>
 		<a href=https://google.com ></a>

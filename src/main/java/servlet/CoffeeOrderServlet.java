@@ -49,7 +49,7 @@ public class CoffeeOrderServlet extends HttpServlet{
 		
 		CoffeeOrder coco =new CoffeeOrder(type,size,sugar);
 //		resp.getWriter().print(coco.coffeeToString());	
-		RequestDispatcher rd = req.getRequestDispatcher("coffee_order.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/coffee_order.jsp");
 		req.setAttribute("coffeeOrder", coco);
 		rd.forward(req, resp);
 	}
