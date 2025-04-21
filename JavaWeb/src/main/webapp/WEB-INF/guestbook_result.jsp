@@ -13,7 +13,7 @@
 			<fieldset>
 				<legend>Guestbook Result</legend>
 				本次留言: ${ message }<p />
-				歷史留言: ${ guestbooks }<p />
+				歷史留言: ${ guestBooks }<p />
 				<a href="/JavaWeb/guestbook" class="pure-button pure-button-primary">返回</a>
 			</fieldset>
 		</div>
