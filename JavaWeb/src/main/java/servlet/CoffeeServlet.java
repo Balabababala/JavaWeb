@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.*;
+import model.coffee.Coffee2;
 
 @WebServlet("/coffee")
 public class CoffeeServlet extends HttpServlet{

@@ -17,7 +17,8 @@
 			<fieldset>
 				<legend>Guestbook Result</legend>
 				本次留言: ${ message }<p />
-				<table class ="pure-table pure-button-bordered">
+				目前留言筆數:${fn:length(guestBooks)}
+				<table class ="pure-table pure-table-bordered">
 					<thead>
 						<tr>
 							<th>No</th>
