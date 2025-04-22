@@ -2,40 +2,63 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
-<%@ taglib prefix="fn" uri="jakarta.tags.functions" %>
+<%@ taglib prefix="fn" uri="jakarta.tags.functions" %>    
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Insert title here</title>
+		<title>🍧冰果店的點餐系統-訂單結果</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
+		
 	</head>
-		<body>
-			<div>
-				<legend>ice Result</legend>
-				<fieldset>
-					<table class ="pure-table pure-table-bordered">
+	<body style="padding: 20px">
+		<div class="pure-form">
+			<h2>🍧冰果店的點餐系統-訂單結果</h2>
+			<fieldset>
+				<legend>訂單列表</legend>
+				<c:set var="totalPriceSum" value="0" />
+				<table class="pure-table pure-table-bordered">
 					<thead>
 						<tr>
 							<th>No</th>
 							<th>主餐</th>
 							<th>配料</th>
 							<th>價格</th>
-						</tr>	
+							<th>刪除</th>
+						</tr>
 					</thead>
 					<tbody>
-						<c:forEach varStatus="i" var="iceOrder" items="${iceOrders}">
+						<c:forEach varStatus="i" var="iceOrder" items="${ iceOrders }">
 							<tr>
-								<td>${i.index +1}</td>
+								<td>${ i.index + 1 }</td>
 								<td>${ iceOrder.mainDish.name }</td>
 								<td>${ iceOrder.toppings.toppings }</td>
-								<td>${ iceOrder.totalPrice }</td>
-							</tr>	
-						</c:forEach>										
-					</tbody>			
+								<td>
+									<fmt:formatNumber value="${ iceOrder.totalPrice }" type="currency" maxFractionDigits="0" />
+								</td>
+								<td>
+									<form action="/JavaWeb/ice" method="post" style="margin: 0;">
+	        							<input type="hidden" name="orderIndex" value="${ i.index }" />
+	        							<button type="submit" class="pure-button" title="刪除這筆資料">❌</button>
+	    							</form>
+    							</td>
+							</tr>
+							<!-- 累加總價 -->
+							<c:set var="totalPriceSum" value="${ totalPriceSum + iceOrder.totalPrice }" />
+						</c:forEach>
+					</tbody>
+					<tfoot>
+						<tr style="background-color: #DDDDDD">
+							<td colspan="3" style="text-align: right;">總金額</td>
+							<td>
+								<fmt:formatNumber value="${ totalPriceSum }" type="currency" maxFractionDigits="0" />
+							</td>
+						</tr>
+					</tfoot>
 				</table>
- 
-					<a href="/JavaWeb/ice" class="pure-buttom pure-buttom-primary">返回</a>
-				</fieldset>
-			</div>
-		</body>
+				
+				<a href="/JavaWeb/ice" class="pure-button pure-button-primary">返回</a>
+			</fieldset>
+		</div>
+	</body>
 </html>

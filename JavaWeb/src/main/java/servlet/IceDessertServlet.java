@@ -28,15 +28,20 @@ public class IceDessertServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setCharacterEncoding("UTF-8");
 		resp.setContentType("text/html;charset=UTF-8");
+		String orderIndex=req.getParameter("orderIndex");
+			
+		if(orderIndex==null) {
+			String mainDish=req.getParameter("mainDish");
+			String[] toppings=req.getParameterValues("toppings");
+
+			IceOrder iceOrder=new IceOrder(mainDish,toppings);
+			iceOrders.add(iceOrder);
+		}else {								//刪除
+			iceOrders.remove(Integer.parseInt(orderIndex));
+			req.setAttribute("iceOrders", iceOrders);
+		}
 		
-		String mainDish=req.getParameter("mainDish");
-		String[] toppings=req.getParameterValues("toppings");
-
-		IceOrder iceOrder=new IceOrder(mainDish,toppings);
-		iceOrders.add(iceOrder);
-
 		req.setAttribute("iceOrders", iceOrders);
-
 		RequestDispatcher rd =req.getRequestDispatcher("/WEB-INF/ice_dessert_result.jsp");
 		rd.forward(req, resp);
 		
