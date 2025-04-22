@@ -40,7 +40,7 @@ public class IceDessertServlet extends HttpServlet{
 			iceOrders.remove(Integer.parseInt(orderIndex));
 			req.setAttribute("iceOrders", iceOrders);
 		}
-		
+			
 		req.setAttribute("iceOrders", iceOrders);
 		RequestDispatcher rd =req.getRequestDispatcher("/WEB-INF/ice_dessert_result.jsp");
 		rd.forward(req, resp);
