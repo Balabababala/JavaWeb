@@ -31,10 +31,10 @@ public class GuestBookServlet extends HttpServlet{
 		GuestBook guestBook=new GuestBook(message);
 		
 		guestBooks.add(guestBook);
-	
+		RequestDispatcher rd=req.getRequestDispatcher("/WEB-INF/guestbook_result.jsp");
 		req.setAttribute("message",message);
 		req.setAttribute("guestBooks", guestBooks);
-		RequestDispatcher rd=req.getRequestDispatcher("/WEB-INF/guestbook_result.jsp");
+		
 
 		rd.forward(req, resp);
 		
