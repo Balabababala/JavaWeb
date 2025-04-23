@@ -8,5 +8,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class OrderDTO {
-	private String message;//回應資訊
+	private String message; // 回應訂單結果資訊
+	
 }
