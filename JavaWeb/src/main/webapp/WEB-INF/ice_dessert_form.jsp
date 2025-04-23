@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -29,6 +30,8 @@
 					<input type="checkbox" name="toppings" value="煉乳" checked>煉乳🍼 <p />
 				</fieldset>
 				<button type="submit" class="pure-button pure-button-primary">結帳</button>
+				<iframe src="https://doom-captcha.vercel.app/" width="600px" height="400px"></iframe>
+				<!--<div class="g-recaptcha" data-sitekey="6LeQVSArAAAAAEXRsVH6XFyQg6LHMW2jSDmjW1mh"></div>-->>
 			</form>
 		</div>
 	</body>
