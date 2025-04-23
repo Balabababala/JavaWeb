@@ -21,9 +21,11 @@
 				<input type="number" name="index" value="${ index }" readonly /><p />
 				品名: 
 				<select name="item">
-					<option value="牛肉麵">牛肉麵</option>
-					<option value="陽春麵">陽春麵</option>
-					<option value="番茄麵">番茄麵</option>
+					<option value="牛肉麵">牛肉麵 $150</option>
+					<option value="陽春麵">陽春麵 $60</option>
+					<option value="番茄麵">番茄麵 $100</option>
+					<option value="麵疙瘩">麵疙瘩 $90</option>
+					<option value="搶鍋麵">搶鍋麵 $110</option>
 				</select>
 				<p />
 				<button type="submit" class="button-success pure-button">修改訂單</button>
