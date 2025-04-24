@@ -5,33 +5,23 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 import model.entity.Order;
 
-public class OrderDAO {
+public interface OrderDAO {
 	
 	// 利用 List 來模擬資料庫/資料表 (稱為:InMemoryDatabase)
-	private static List<Order> orders = new CopyOnWriteArrayList<>();
+	public static List<Order> orders = new CopyOnWriteArrayList<>();
 	
 	// 存入一筆資訊
-	public void save(Order order) {
-		orders.add(order);
-	}
+	public void save(Order order) ;
 	
 	// 取得所有歷史資料
-	public List<Order> findAll() {
-		return orders;
-	}
+	public List<Order> findAll() ;
 	
 	// 刪除一筆資訊
-	public void remove(int index) {
-		orders.remove(index);
-	}
-	
+	public void remove(int index) ;
+
 	// 修改一筆資訊
-	public void update(int index, Order newOrder) {
-		orders.set(index, newOrder);
-	}
-	
+	public void update(int index, Order newOrder) ;
+
 	// 取得單筆資料
-	public Order getOrder(int index) {
-		return orders.get(index);
-	}
+	public Order getOrder(int index) ;
 }

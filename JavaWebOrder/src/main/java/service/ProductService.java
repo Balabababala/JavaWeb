@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dao.ProductDAO;
+import dao.ProductDAOFactory;
 import model.dto.ProductDTO;
 import model.entity.Product;
 
 public class ProductService {
-	private ProductDAO productDAO = new ProductDAO();
+	private ProductDAOFactory productDAOFactory=new ProductDAOFactory();
+	private ProductDAO productDAO = productDAOFactory.createProductDAO();
 	
 	public List<ProductDTO> findAll() {
 		List<Product> products = productDAO.findAll();

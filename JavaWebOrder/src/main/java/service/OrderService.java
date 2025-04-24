@@ -4,15 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dao.OrderDAO;
+import dao.OrderDAOFactory;
 import dao.ProductDAO;
+import dao.ProductDAOFactory;
 import model.dto.OrderDTO;
 import model.entity.Order;
 
 public class OrderService {
 	
-	
-	private OrderDAO orderDAO = new OrderDAO();
-	private ProductDAO productDAO = new ProductDAO();
+	private OrderDAOFactory orderDAOFactory=new OrderDAOFactory();
+	private OrderDAO orderDAO = orderDAOFactory.createOrderDAO();
+	private ProductDAOFactory productDAOFactory=new ProductDAOFactory();
+	private ProductDAO productDAO = productDAOFactory.createProductDAO();
+
 	
 	// 根據訂單項目(item)新增一筆訂單並回傳訂單顯示資訊(OrderDTO)
 	public OrderDTO addOrder(String item) {
