@@ -11,13 +11,13 @@ public interface OrderDAO {
 	public static List<Order> orders = new CopyOnWriteArrayList<>();
 	
 	// 存入一筆資訊
-	public void save(Order order) throws DAOException;
+	public void save(Order order);
 	
 	// 取得所有歷史資料
-	public List<Order> findAll() throws DAOException;
+	public List<Order> findAll() ;
 	
 	// 刪除一筆資訊
-	public void remove(int index)throws DAOException ;
+	public void remove(int index) ;
 
 	// 修改一筆資訊
 	public void update(int index, Order newOrder) ;

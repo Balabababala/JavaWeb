@@ -1,7 +1,7 @@
 package dao;
 
 public class OrderDAOFactory {
-	public OrderDAO createOrderDAO() throws Exception {
+	public OrderDAO createOrderDAO()  {
 		return new OrderDAOMemoryImpl();
 	}
 }
