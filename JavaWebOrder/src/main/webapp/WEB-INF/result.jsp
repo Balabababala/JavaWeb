@@ -17,7 +17,7 @@
 				<legend>訂單結果</legend>
 				${ orderDTO.message }
 				<p />
-				<a href="/JavaWebOrder/index.jsp" class="pure-button pure-button-primary">回首頁</a>
+				<a href="/JavaWebOrder/index" class="pure-button pure-button-primary">回首頁</a>
 			</fieldset>
 		</div>
 	</body>

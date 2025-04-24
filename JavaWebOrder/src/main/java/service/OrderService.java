@@ -10,6 +10,7 @@ import model.entity.Order;
 
 public class OrderService {
 	
+	
 	private OrderDAO orderDAO = new OrderDAO();
 	private ProductDAO productDAO = new ProductDAO();
 	
@@ -43,7 +44,16 @@ public class OrderService {
 		}
 		return orderDTOs;
 	}
-	
+	public OrderDTO getTotalPrice() {
+		List<Order> orders = orderDAO.findAll();
+		OrderDTO dto=new OrderDTO();
+		int totel=orders.stream()
+		 	      .mapToInt(Order::getPrice)
+				  .sum();
+		dto.setMessage(Integer.toString(totel));					
+		return dto;
+	}
+
 	// 刪除一筆訂單根據 index
 	public OrderDTO removeOrder(String index) {
 		return removeOrder(Integer.parseInt(index));
