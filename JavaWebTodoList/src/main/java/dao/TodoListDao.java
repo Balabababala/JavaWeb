@@ -1,5 +1,6 @@
 package dao;
 
+import java.io.Closeable;
 import java.util.List;
 import model.entity.*;
 
@@ -9,17 +10,19 @@ public interface TodoListDao {
 	List<Todo> findAllTodo();
 	
 	//2.查尋單筆 Todo
-	List<Todo> getTodo(Integer id);
+	Todo getTodo(Integer id);
 	
 	//3.加     Todo
-	List<Todo> addTodo(Todo todo);
+	void addTodo(Todo todo);
 	
 	//4.修     Todo的complete
-	List<Todo> updataToComplete(Integer id,Boolean completed);
+	void updataToComplete(Integer id,Boolean completed);
 	
 	//5.修     Todo的Text
-	List<Todo> updataToComplete(Integer id,String text);
+	void updataToComplete(Integer id,String text);
 	
 	//6.刪     Todo
-	List<Todo> deleteTodo(Integer id);
+	void deleteTodo(Integer id);
+	
+
 }

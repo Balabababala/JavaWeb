@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TodoDTO {
-	private Integer id;
-	private String text;
-	private Boolean completed;
+	private Integer no;
+	private String content;
+	private Boolean isFinished;
 }
