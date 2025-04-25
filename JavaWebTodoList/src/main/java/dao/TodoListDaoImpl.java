@@ -73,7 +73,7 @@ public class TodoListDaoImpl extends BaseDao implements TodoListDao{
 			pstmt.setBoolean(2, todo.getCompleted());
 			
 			int rowcount=pstmt.executeUpdate();
-			System.out.printf("新增第%s筆成功",rowcount);
+			System.out.printf("新增%s筆成功",rowcount);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -81,7 +81,7 @@ public class TodoListDaoImpl extends BaseDao implements TodoListDao{
 	}
 
 	@Override
-	public void updataToComplete(Integer id, Boolean completed) {
+	public void updateToComplete(Integer id, Boolean completed) {
 		String sql="Update todo set completed=? where id=?";
 		try (PreparedStatement pstmt= conn.prepareStatement(sql)){
 			pstmt.setBoolean(1, completed);
@@ -89,7 +89,7 @@ public class TodoListDaoImpl extends BaseDao implements TodoListDao{
 			
 			int rowcount=pstmt.executeUpdate();
 			
-			System.out.printf("更新第%s筆成功",rowcount);
+			System.out.printf("更新%s筆成功",rowcount);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -98,7 +98,7 @@ public class TodoListDaoImpl extends BaseDao implements TodoListDao{
 	}
 
 	@Override
-	public void updataToComplete(Integer id, String text) {
+	public void updateToText(Integer id, String text) {
 		String sql="Update todo set text=? where id=?";
 		try (PreparedStatement pstmt= conn.prepareStatement(sql)){
 			pstmt.setString(1, text);
@@ -106,7 +106,7 @@ public class TodoListDaoImpl extends BaseDao implements TodoListDao{
 			
 			int rowcount=pstmt.executeUpdate();
 			
-			System.out.printf("更新第%s筆成功",rowcount);
+			System.out.printf("更新%s筆成功",rowcount);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -121,7 +121,7 @@ public class TodoListDaoImpl extends BaseDao implements TodoListDao{
 			
 			int rowcount=pstmt.executeUpdate();
 			
-			System.out.printf("刪除第%s筆成功",rowcount);
+			System.out.printf("刪除%s筆成功",rowcount);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

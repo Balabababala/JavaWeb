@@ -16,10 +16,10 @@ public interface TodoListDao {
 	void addTodo(Todo todo);
 	
 	//4.修     Todo的complete
-	void updataToComplete(Integer id,Boolean completed);
+	void updateToComplete(Integer id,Boolean completed);
 	
 	//5.修     Todo的Text
-	void updataToComplete(Integer id,String text);
+	void updateToText(Integer id,String text);
 	
 	//6.刪     Todo
 	void deleteTodo(Integer id);
