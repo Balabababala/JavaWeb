@@ -1,7 +1,7 @@
 package controller;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.List;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -10,58 +10,71 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.dto.TodoDTO;
+import service.TodoListService;
 import service.TodoListServiceImpl;
 
 @WebServlet("/todolist/*")
-public class TodoListServlet extends HttpServlet{
-	TodoListServiceImpl service=new TodoListServiceImpl();
+public class TodoListServlet extends HttpServlet  {
 	
+	private TodoListService service = new TodoListServiceImpl();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String pathInfo= req.getPathInfo();
+		String pathInfo = req.getPathInfo();
+		//resp.getWriter().print("pathInfo = " + pathInfo);
+		String id = req.getParameter("id");
+		String completed = req.getParameter("checked");
+		String text = req.getParameter("text");
+		
 		switch (pathInfo) {
-		case "/": 			//首頁
-		case "/*":
-			List<TodoDTO> todos=service.findAllTodo();
-	
-			RequestDispatcher rd= req.getRequestDispatcher("/WEB-INF/view/todolist.jsp");
-			req.setAttribute("todos", todos);
-			rd.forward(req, resp);
-			return;
-		case "/update":		//更新
-			String id=req.getParameter("id");
-			String completed=req.getParameter("checked");
-			String text=req.getParameter("text");
-			
-			if(completed!=null) {
-				//修 Todo completed 狀態
-				service.updateToComplete(Integer.parseInt(id), Boolean.getBoolean(completed));
-			}else if(text!=null) {
-				//修 Todo text 內容
-				service.updateToText(Integer.parseInt(id), text);
-			}
-
-			break;
-		case "/delete":		//刪除
-			
-			break;
-		default:
-			resp.getWriter().print("path error");
-			return;
+			case "/":  // 顯示 Todo List 首頁
+			case "/*": // 顯示 Todo List 首頁
+				List<TodoDTO> todos = service.findAllTodos();
+				RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/view/todolist.jsp");
+				req.setAttribute("todos", todos);
+				rd.forward(req, resp);
+				return;
+			case "/update": // 修改
+				if(completed != null) { // 修改 completed 
+					service.updateTodoComplete(Integer.parseInt(id), Boolean.parseBoolean(completed));
+					// 重跑指定頁(首頁)
+					resp.sendRedirect("/JavaWebTodoList/todolist/");
+					return;
+				} else if(text != null) { // 修改 text
+					service.updateTodoText(Integer.parseInt(id), text);
+					// 重跑指定頁(首頁)
+					resp.sendRedirect("/JavaWebTodoList/todolist/");
+					return;
+				}
+				break;
+			case "/delete": // 刪除
+				service.deleteTodo(Integer.parseInt(id));
+				// 重跑指定頁(首頁)
+				resp.sendRedirect("/JavaWebTodoList/todolist/");
+				return;
+			default:  // 錯誤路徑
+				resp.getWriter().print("path error");
+				return;
 		}
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String pathInfo= req.getPathInfo();
-		if (!pathInfo.equals("/add")) {
+		String pathInfo = req.getPathInfo();
+		if(!pathInfo.equals("/add")) {
+			// 錯誤路徑
+			resp.getWriter().print("path error");
 			return;
 		}
-		String text=req.getParameter("text");
-		Boolean completed=false;
+		// 進行新增程序
+		String text = req.getParameter("text");
+		Boolean completed = false;
 		service.addTodo(text, completed);
-		//重跑首頁
-		resp.sendRedirect("/JavaWebTodoList/todolist");
+		// 重跑指定頁(首頁)
+		resp.sendRedirect("/JavaWebTodoList/todolist/");
 	}
+	
+	
+	
+	
 }
