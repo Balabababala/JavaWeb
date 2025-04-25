@@ -15,10 +15,10 @@ public class SimplePasswordHash {
 		}
 		return sb.toString();
 	}
-	public static void main(String[] args[]) throws Exception {
+	public static void main(String[] args) throws Exception {
 		String password="1234";
 		String hash= hashPassword(password);
-		System.out.printf("password:%s hash: %s length: %d%s",password,hash,password.length(),hash.length());
+		System.out.printf("password:%s hash: %s length: %s",password,hash,hash.length());
 		
 	}
 	
