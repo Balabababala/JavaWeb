@@ -7,7 +7,7 @@ import model.entity.*;
 public interface TodoListDao {
 	
 	//1.查尋所有 Todo
-	List<Todo> findAllTodo();
+	List<Todo> findAllTodos();
 	
 	//2.查尋單筆 Todo
 	Todo getTodo(Integer id);
@@ -16,10 +16,10 @@ public interface TodoListDao {
 	void addTodo(Todo todo);
 	
 	//4.修     Todo的complete
-	void updateToComplete(Integer id,Boolean completed);
+	void updateTodoComplete(Integer id,Boolean completed);
 	
 	//5.修     Todo的Text
-	void updateToText(Integer id,String text);
+	void updateTodoText(Integer id,String text);
 	
 	//6.刪     Todo
 	void deleteTodo(Integer id);

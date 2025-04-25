@@ -1,7 +1,6 @@
 package service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import dao.TodoListDao;
 import dao.TodoListDaoImpl;
@@ -13,7 +12,7 @@ public class TodoListServiceImpl implements TodoListService{
 
 	@Override
 	public List<TodoDTO> findAllTodo() {		
-		return dao.findAllTodo()
+		return dao.findAllTodos()
 				  .stream()
 				  .map(this::transferToDTO)
 				  .toList();
@@ -31,12 +30,12 @@ public class TodoListServiceImpl implements TodoListService{
 
 	@Override
 	public void updateToComplete(Integer id, Boolean completed) {
-		dao.updateToComplete(id, completed);
+		dao.updateTodoComplete(id, completed);
 	}
 
 	@Override
 	public void updateToText(Integer id, String text) {
-		dao.updateToText(id, text);
+		dao.updateTodoText(id, text);
 	}
 
 	@Override
