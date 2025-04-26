@@ -1,0 +1,11 @@
+
+
+create database javaweborderdb;
+
+use javaweborderdb;
+
+create table  if not exists orders(
+id int not null AUTO_INCREMENT primary key,
+item varchar(50),
+price int
+);
