@@ -26,6 +26,8 @@
 					</c:forEach>
 				</select>
 				<p />
+				數量:<input type="number" name="quality" min="1" max="100" required/><p />
+				<p />
 				<button type="submit" class="button-success pure-button">修改訂單</button>
 			</fieldset>
 		</form>

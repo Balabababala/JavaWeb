@@ -12,6 +12,8 @@ import model.entity.Order;
 
 public class OrderDAOJdbcImpl extends BaseDAO implements OrderDAO{
 
+
+
 	public List<Order> orders = new CopyOnWriteArrayList<>();
 	
 
@@ -30,11 +32,12 @@ public class OrderDAOJdbcImpl extends BaseDAO implements OrderDAO{
             ps1.close();
 
             // 插入新資料
-            String sql = "INSERT INTO orders (list_index, item, price) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO orders (list_index, item, price,quality) VALUES (?, ?, ?, ?)";
             PreparedStatement ps2 = conn.prepareStatement(sql);
             ps2.setInt(1, nextIndex);
             ps2.setString(2, order.getItem());
             ps2.setInt(3, order.getPrice());
+            ps2.setInt(4, order.getQuality());
             ps2.executeUpdate();
             ps2.close();
 
@@ -45,14 +48,15 @@ public class OrderDAOJdbcImpl extends BaseDAO implements OrderDAO{
 	}
 
 	@Override
-	public void update(int list_index, Order newOrder) {
+	public void update(int list_index, Order newOrder,int quality) {
 		 try {
 	            // 更新資料
-	            String sql = "UPDATE orders SET item = ?, price = ? WHERE list_index = ?";
+	            String sql = "UPDATE orders SET item = ?, price = ? ,quality=? WHERE list_index = ?";
 	            PreparedStatement ps = conn.prepareStatement(sql);
 	            ps.setString(1, newOrder.getItem());
 	            ps.setInt(2, newOrder.getPrice());
-	            ps.setInt(3, list_index);
+	            ps.setInt(3, newOrder.getQuality());
+	            ps.setInt(4, list_index);
 	            ps.executeUpdate();
 	            ps.close();
 
@@ -109,6 +113,7 @@ public class OrderDAOJdbcImpl extends BaseDAO implements OrderDAO{
 	                    rs.getInt("list_index"),
 	                    rs.getString("item"),
 	                    rs.getInt("price")
+	                    ,rs.getInt("quality")
 	                );
 	                list.add(order);
 	            }
@@ -136,7 +141,8 @@ public class OrderDAOJdbcImpl extends BaseDAO implements OrderDAO{
 		                rs.getInt("id"),
 		                rs.getInt("list_index"),
 		                rs.getString("item"),
-		                rs.getInt("price")
+		                rs.getInt("price"),
+		                rs.getInt("quality")
 		            );
 		        }
 
@@ -145,7 +151,7 @@ public class OrderDAOJdbcImpl extends BaseDAO implements OrderDAO{
 		    } catch (SQLException e) {
 		        e.printStackTrace();
 		    }
-		return null;
+		return order;
 	}
 
 	

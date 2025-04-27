@@ -26,7 +26,6 @@
 		    <artifactId>lombok</artifactId>
 		    <version>1.18.38</version>
 		</dependency>
-  		
   		<!-- MySQL -->
 		<dependency>
 			<groupId>mysql</groupId>
@@ -34,6 +33,7 @@
 			<version>8.0.33</version>
 		</dependency>
 		
+
   </dependencies>
   
   <build>

@@ -38,7 +38,8 @@ public class OrderUpdateServlet extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		String index = req.getParameter("index");
 		String item = req.getParameter("item");
-		OrderDTO orderDTO = orderService.updateOrder(Integer.parseInt(index), item);
+		String quality = req.getParameter("quality"); 
+		OrderDTO orderDTO = orderService.updateOrder(index, item,quality);
 		
 		// 重導到指定 jsp 並帶上歷史反饋資料(OrderDTO)
 		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/result.jsp");

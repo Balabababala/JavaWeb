@@ -40,8 +40,9 @@ public class OrderServlet extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		// 取得使用者在表單中所訂購的商品
 		String item = req.getParameter("item"); 
+		String quality = req.getParameter("quality"); 
 		// 新增訂單並會得到反饋
-		OrderDTO orderDTO = orderService.addOrder(item);
+		OrderDTO orderDTO = orderService.addOrder(item,quality);
 		// 重導到指定 jsp 並帶上歷史反饋資料(OrderDTO)
 		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/result.jsp");
 		req.setAttribute("orderDTO", orderDTO);

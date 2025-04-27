@@ -20,7 +20,7 @@ public interface OrderDAO {
 	public void remove(int index) ;
 
 	// 修改一筆資訊
-	public void update(int index, Order newOrder) ;
+	public void update(int index, Order newOrder,int quality) ;
 
 	// 取得單筆資料
 	public Order getOrder(int index) ;

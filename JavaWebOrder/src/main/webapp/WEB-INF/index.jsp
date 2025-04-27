@@ -22,8 +22,10 @@
 					<c:forEach var="productDTO" items="${productDTOs}">
 						<option value="${productDTO.item}">${productDTO.item} ${productDTO.price} 元</option>
 					</c:forEach>
+						
 				</select>
 				<p />
+				數量:<input type="number" name="quality" min="1" max="100" required /><p />
 				<button type="submit" class="button-success pure-button">送出訂單</button>
 			</fieldset>
 		</form>

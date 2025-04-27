@@ -19,18 +19,19 @@ public class OrderService {
 
 	
 	// 根據訂單項目(item)新增一筆訂單並回傳訂單顯示資訊(OrderDTO)
-	public OrderDTO addOrder(String item) {
+	public OrderDTO addOrder(String item,String quality) {
 		// 1: 根據訂單項目(item)新增一筆訂單
 		Order order = new Order();
 		order.setItem(item);
+		order.setQuality(Integer.parseInt(quality));
 		//order.setPrice(100); // 價格一律 100 元
-		order.setPrice(productDAO.getProduct(item).getPrice());
+		order.setPrice(productDAO.getProduct(item).getPrice()*order.getQuality());
 		// 傳給 orderDAO 儲存訂單
 		orderDAO.save(order);
 		//-------------------------------------
 		// 2: 回傳訂單顯示資訊(OrderDTO)
 		OrderDTO orderDTO = new OrderDTO();
-		orderDTO.setMessage("您點了 " + order.getItem() + " 價格:" + order.getPrice() + "元");
+		orderDTO.setMessage("您點了 " + order.getItem() + order.getQuality()+"個"+" 價格:" + order.getPrice() + "元");
 		
 		return orderDTO;
 	}
@@ -73,11 +74,12 @@ public class OrderService {
 	}
 	
 	// 修改單筆
-	public OrderDTO updateOrder(int index, String newItem) {
-		Order order = orderDAO.getOrder(index);
+	public OrderDTO updateOrder(String index, String newItem,String quality) {
+		Order order = orderDAO.getOrder(Integer.parseInt(index));
 		order.setItem(newItem);
-		order.setPrice(productDAO.getProduct(newItem).getPrice());
-		orderDAO.update(index, order);
+		order.setPrice(productDAO.getProduct(newItem).getPrice()*Integer.parseInt(quality));
+		order.setQuality(Integer.parseInt(quality));
+		orderDAO.update(Integer.parseInt(index), order,Integer.parseInt(quality));
 		// 回報結果
 		OrderDTO orderDTO = new OrderDTO();
 		orderDTO.setMessage("index=" + index + ". 資料修改成功");

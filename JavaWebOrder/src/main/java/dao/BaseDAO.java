@@ -14,14 +14,15 @@ public class BaseDAO {
 	
 	protected Connection conn ;
 	
-	BaseDAO() throws Exception{
+	BaseDAO(){
 		String url="jdbc:mysql://localhost:3306/javaweborderdb";
 		String user="root";
 		String password="abc123";
 		try {
+			Class.forName("com.mysql.cj.jdbc.Driver"); // 註冊 MySQL Driver
 			conn=DriverManager.getConnection(url, user, password);
 			
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			// TODO: handle exception
 		}
 	}

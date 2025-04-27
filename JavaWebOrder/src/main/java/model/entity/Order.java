@@ -12,4 +12,5 @@ public class Order {
 	private Integer list_index;
 	private String item;
 	private Integer price;
+	private Integer quality;
 }

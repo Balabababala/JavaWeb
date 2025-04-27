@@ -6,6 +6,8 @@ use javaweborderdb;
 
 create table  if not exists orders(
 id int not null AUTO_INCREMENT primary key,
+list_index Int not null,
 item varchar(50),
-price int
+price int,
+quality int
 );
