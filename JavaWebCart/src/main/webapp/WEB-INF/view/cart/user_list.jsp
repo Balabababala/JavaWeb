@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
+<%@ taglib prefix="fn" uri="jakarta.tags.functions" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -19,11 +21,19 @@
 					<thead>
 						<tr>
 							<th>序號</th><th>帳號</th><th>Email</th><th>Email 驗證</th>
+							
 						</tr>
 					</thead>
 					<tbody>
 						<!-- 使用者列表紀錄 -->
-						
+						<tr>
+							<c:forEach var="dto" items="${userDTOs}">
+								<td>${dto.id}</td>
+								<td>${dto.username}</td>
+								<td>${dto.email}</td>
+								<td>${dto.completed}</td>
+							</c:forEach>
+						</tr>				
 					</tbody>
 				</table>
 			</fieldset>

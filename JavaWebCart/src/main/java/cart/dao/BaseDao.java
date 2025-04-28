@@ -1,4 +1,4 @@
-package cart.dao.Impl;
+package cart.dao;
 
 
 import java.sql.Connection;

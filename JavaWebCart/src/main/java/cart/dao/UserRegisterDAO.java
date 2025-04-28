@@ -1,4 +1,4 @@
-package cart.dao.Impl;
+package cart.dao;
 
 import cart.model.entity.User;
 

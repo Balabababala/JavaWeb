@@ -1,9 +1,9 @@
-package cart.dao.Impl.Impl;
+package cart.dao.Impl;
 
 import java.sql.PreparedStatement;
 
-import cart.dao.Impl.BaseDao;
-import cart.dao.Impl.UserRegisterDAO;
+import cart.dao.BaseDao;
+import cart.dao.UserRegisterDAO;
 import cart.model.entity.User;
 
 public class UserRegisterDAOImpl extends BaseDao implements UserRegisterDAO{
