@@ -25,7 +25,6 @@ public class UserRegisterServiceImpl implements UserRegisterService{
 			user.setHashPassword(hashPassword);
 			user.setHashSalt(hashSalt);
 			user.setEmail(email);
-			userRegisterdao.addUser(user);
 			
 			int rowcount =userRegisterdao.addUser(user); //更新 1=成功
 			if(rowcount <1) {

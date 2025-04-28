@@ -12,6 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet("/user/register")
 public class UserRegisterServlet extends HttpServlet{
 	private UserRegisterService userRegisterService=new UserRegisterServiceImpl();
+	private EmailService emailService= new EmailService();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -24,7 +25,20 @@ public class UserRegisterServlet extends HttpServlet{
 		String password=req.getParameter("password");
 		String email =req.getParameter("email");
 		userRegisterService.addUser(username,password,email);
-		req.getRequestDispatcher("/WEB-INF/view/cart/login.jsp");
+		
+		//傳email
+		String link ="http://localhost:8080/JavaWebCart/email/confirm?username="+username;
+		emailService.sendEmail(email, link);
+		
+		String resultTitle = "註冊結果";
+		String resultMessage = "用戶 " + username + " 註冊成功 !";
+		resultMessage += "<p />";
+		resultMessage += "系統已送出驗證信件到 " + email + " 信箱, 請收信並點選[確認]連結";
+		
+		req.setAttribute("resultTitle", resultTitle);
+		req.setAttribute("resultMessage", resultMessage);
+		
+		req.getRequestDispatcher("/WEB-INF/view/cart/result.jsp").forward(req, resp);
 		
 	}
 

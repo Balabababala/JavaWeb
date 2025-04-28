@@ -10,7 +10,7 @@ public class UserRegisterDAOImpl extends BaseDao implements UserRegisterDAO{
 
 	@Override
 	public int addUser(User user) {
-		String sql ="insert int user(username,hash_password,hash_salt,email) value(?,?,?,?))";
+		String sql ="insert into user(username,hash_password,hash_salt,email) values(?,?,?,?)";
 		try (PreparedStatement pstmt =conn.prepareStatement(sql)){
 			pstmt.setString(1, user.getUsername());
 			pstmt.setString(2, user.getHashPassword());

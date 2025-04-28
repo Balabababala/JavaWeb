@@ -19,13 +19,12 @@ Home
 |__ Login/Signin
       |__ 註冊 (靜態表單)
       |__ 會員中心
-          |__ 查看訂單 (1-2 筆靜態訂單)
-	  |__ 編輯資料 (靜態展示用戶資料)
+          |__ 買家會員中心
+          |     |__ 查看訂單 (1-2 筆靜態訂單)
+          |     |__ 編輯資料 (靜態展示用戶資料)
+          |__ 賣家會員中心 (可選)
+                |__ 查看已上架商品 (1-2 個靜態商品)
       		
-
-         
-         
-
 
 
 員工後台
@@ -67,7 +66,7 @@ Dashboard (儀表板)
 |__ 登出 (跳轉登入頁，顯示已登出)
 
 推薦可以最後做
-員工後臺 可砍掉
+優惠 可砍掉
 
 
 1. users – 使用者表（合併前台和後台用戶）
@@ -78,9 +77,6 @@ email VARCHAR(255) UNIQUE     電子郵件
 role_id BIGINT (FK)           角色 ID（連接到 roles 表）
 created_at DATETIME           建立時間
 last_login_at DATETIME        最後登入時間（可選）
-phone 			      電話（簡單模擬用）
-address 		      地址（預設送貨地址）
-is_active 		      帳號是否啟用（BOOLEAN）
 
 2. products – 商品表
 id BIGINT (PK)                商品 ID
@@ -119,15 +115,7 @@ product_id BIGINT (FK)        商品 ID
 quantity INT CHECK (>0)       數量
 unit_price DECIMAL(10,2)      商品單價
 
-7. view_logs 瀏覽log
 
-id BIGINT (PK)
-
-user_id (FK)
-
-product_id (FK)
-
-viewed_at DATETIME
 
 
 
@@ -150,45 +138,3 @@ description TEXT              權限描述
 role_id BIGINT (FK)           角色 ID
 permission_id BIGINT (FK)     權限 ID
 assigned_at DATETIME          分配時間（可選）
-
-4. recommendations 推薦
-id BIGINT (PK)
-product_id (FK) 商品 ID
-display_order (INT) 排序
-
-5.search_logs	後臺查詢log
-
-id BIGINT (PK)
-user_id (FK，可選，匿名搜尋就 NULL)
-keyword VARCHAR(255)
-searched_at DATETIME
-
-6.coupons 優惠
-
-id BIGINT (PK)
-
-code VARCHAR(100) UNIQUE
-
-discount_type ENUM('PERCENT', 'FIXED')
-
-discount_value DECIMAL(10,2)
-
-valid_from DATETIME
-
-valid_to DATETIME
-
-usage_limit INT（可用次數限制）
-
-used_count INT（已用次數）
-
-7.promotions 活動設定表
-
-id BIGINT (PK)
-
-name VARCHAR(255)
-
-discount_description TEXT
-
-start_at DATETIME
-
-end_at DATETIME
