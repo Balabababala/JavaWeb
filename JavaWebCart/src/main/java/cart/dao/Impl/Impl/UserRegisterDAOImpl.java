@@ -1,7 +1,9 @@
-package cart.dao.Impl;
+package cart.dao.Impl.Impl;
 
 import java.sql.PreparedStatement;
 
+import cart.dao.Impl.BaseDao;
+import cart.dao.Impl.UserRegisterDAO;
 import cart.model.entity.User;
 
 public class UserRegisterDAOImpl extends BaseDao implements UserRegisterDAO{
@@ -32,7 +34,7 @@ public class UserRegisterDAOImpl extends BaseDao implements UserRegisterDAO{
 			int rowcount = pstmt.executeUpdate();//執行更新
 			return rowcount; //1 表成功
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 		return 0;
 	}
