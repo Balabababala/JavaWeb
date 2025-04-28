@@ -1,6 +1,7 @@
 
 create database cart
 charset utf8mb4;
+
 use cart;
 
 -- 使用者資料表
