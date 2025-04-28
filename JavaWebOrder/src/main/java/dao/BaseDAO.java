@@ -19,7 +19,7 @@ public class BaseDAO {
 		String user="root";
 		String password="abc123";
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver"); // 註冊 MySQL Driver
+			Class.forName("com.mysql.jdbc.Driver"); // 註冊 MySQL Driver
 			conn=DriverManager.getConnection(url, user, password);
 			
 		} catch (Exception e) {

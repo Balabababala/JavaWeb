@@ -23,7 +23,8 @@ public class OrderDAOMemoryImpl implements OrderDAO{
 	}
 @Override	
 	// 修改一筆資訊
-	public void update(int index, Order newOrder) {
+	public void update(int index, Order newOrder,int quality) {
+		newOrder.setQuality(quality);
 		orders.set(index, newOrder);
 	}
 @Override	
