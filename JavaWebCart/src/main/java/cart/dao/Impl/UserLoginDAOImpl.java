@@ -10,7 +10,7 @@ import cart.model.entity.User;
 public class UserLoginDAOImpl extends BaseDao implements UserLoginDAO{
 
 	@Override
-	public User findUserByname(String username) {
+	public User findUserByName(String username) {
 		String sql ="select id,username,hash_password,hash_salt,email,completed from user where username=?";
 		try (PreparedStatement pstmt=conn.prepareStatement(sql)){
 			pstmt.setString(1, username);

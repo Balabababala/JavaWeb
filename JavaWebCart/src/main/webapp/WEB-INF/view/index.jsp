@@ -10,6 +10,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<script>
+		window.location.hred='/';
+	</script>
 </body>
 </html>

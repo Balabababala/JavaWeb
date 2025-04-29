@@ -17,14 +17,17 @@ Home
 |     |__ 搜尋結果 (靜態模擬，輸入關鍵字顯示結果)
 |     |__ 篩選功能 (1-2 個簡單篩選，如價格排序)
 |__ Login/Signin
-      |__ 註冊 (靜態表單)
+      |__ 註冊 (靜態表單)(分買家賣家)
       |__ 會員中心
+	  |__登錄
           |__ 買家會員中心
-          |     |__ 查看訂單 (1-2 筆靜態訂單)
-          |     |__ 編輯資料 (靜態展示用戶資料)
+          |        |__ 查看訂單 (1-2 筆靜態訂單)
+          |        |__ 編輯資料 (靜態展示用戶資料)
           |__ 賣家會員中心 (可選)
-                |__ 查看已上架商品 (1-2 個靜態商品)
-      		
+		    |__ 上架商品
+		    |__ 查看已上架商品 (1-2 個靜態商品)
+                    |__ 查看訂單
+      		    |__ 編輯資料 (靜態展示用戶資料)
 
 
 員工後台
@@ -56,11 +59,6 @@ Dashboard (儀表板)
 搜尋與瀏覽紀錄 (Search & Activity Logs)
 |__ 搜尋紀錄查詢 (5-10 筆假紀錄表格)
 |__ 最近瀏覽商品紀錄 (5-10 筆假紀錄表格)
-
-活動與優惠 (Promotions)
-|__ 優惠券管理 (簡單表單 + 2-3 個靜態優惠券)
-|__ 活動設定 (輸入活動名稱/折扣，模擬設定)
-
 帳號管理 (Account)
 |__ 修改密碼 (簡單表單，模擬更新)
 |__ 登出 (跳轉登入頁，顯示已登出)
@@ -72,7 +70,8 @@ Dashboard (儀表板)
 1. users – 使用者表（合併前台和後台用戶）
 id BIGINT (PK)                使用者 ID
 username VARCHAR(255) UNIQUE  使用者名稱
-password VARCHAR(255)         密碼（加密）
+hash_password VARCHAR(255)    密碼（加密）
+hash_salt		      加鹽
 email VARCHAR(255) UNIQUE     電子郵件
 role_id BIGINT (FK)           角色 ID（連接到 roles 表）
 created_at DATETIME           建立時間
@@ -103,8 +102,27 @@ added_at DATETIME             加入時間（可選）
 5. orders – 訂單主表
 id BIGINT (PK)                訂單 ID
 user_id BIGINT (FK)           購買人
+seller_id BIGINT	      賣方
 order_date DATETIME           下單時間
-status ENUM('PENDING', 'PAID', 'SHIPPED', 'CANCELLED') 訂單狀態
+status ENUM(
+  'PENDING',           -- 等待付款
+  'PAID',              -- 已付款，待出貨
+  'SHIPPED',           -- 已出貨
+  'DELIVERED',         -- 已收貨
+  'COMPLETED',         -- 訂單完成
+  'CANCELLED',         -- 訂單取消
+  'RETURN_REQUESTED',  -- 退貨申請中
+  'RETURNED'           -- 退貨完成
+)) 訂單狀態
+shipping_method	VARCHAR(100)	配送方式（例如：宅配、超商取貨）
+payment_method	VARCHAR(100)	付款方式（例如：信用卡、貨到付款）
+payment_status	ENUM('PENDING', 'PAID', 'FAILED', 'REFUNDED')	付款狀態 (有些時候「付款狀態」和「訂單狀態」不一致，比如：
+								付款失敗（payment_status = FAILED），但訂單還留在 PENDING。
+								已付款（payment_status = PAID），但訂單還沒出貨（status = PAID）。
+								成功退款了（payment_status = REFUNDED），訂單仍然要顯示 RETURNED。)
+tracking_number	VARCHAR(255)	物流單號（出貨後填入）
+receiver_name	VARCHAR(255)	收件人姓名
+receiver_phone	VARCHAR(20)	收件人電話
 total_amount DECIMAL(10,2)    訂單總金額
 shipping_address TEXT         收貨地址（可選）
 
