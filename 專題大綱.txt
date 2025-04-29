@@ -178,7 +178,7 @@ CREATE UNIQUE INDEX idx_user_product ON product_reviews (user_id, product_id);//
 id BIGINT (PK)                角色 ID
 name VARCHAR(100) UNIQUE      角色名稱（User, Admin, Customer Support）
 description TEXT              角色描述
-created_at DATETIME           建立時間（可選）
+created_at DATETIME           建立時間
 
 2. permissions – 權限表
 id BIGINT (PK)                權限 ID
@@ -188,7 +188,7 @@ description TEXT              權限描述
 3. role_permissions – 角色權限對應表
 role_id BIGINT (FK)           角色 ID
 permission_id BIGINT (FK)     權限 ID
-assigned_at DATETIME          分配時間（可選）
+assigned_at DATETIME          分配時間
 
 4.CREATE TABLE notifications (  -通知中心
     id BIGINT AUTO_INCREMENT PRIMARY KEY,    -- 通知ID
