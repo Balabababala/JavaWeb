@@ -5,11 +5,11 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import cart.dao.BaseDao;
+import cart.dao.BaseDAO;
 import cart.dao.UserListDAO;
 import cart.model.entity.User;
 
-public class UserListDAOImpl extends BaseDao implements UserListDAO{
+public class UserListDAOImpl extends BaseDAO implements UserListDAO{
 
 	@Override
 	public List<User> findAllUser() {

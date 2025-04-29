@@ -2,11 +2,11 @@ package cart.dao.Impl;
 
 import java.sql.PreparedStatement;
 
-import cart.dao.BaseDao;
+import cart.dao.BaseDAO;
 import cart.dao.UserRegisterDAO;
 import cart.model.entity.User;
 
-public class UserRegisterDAOImpl extends BaseDao implements UserRegisterDAO{
+public class UserRegisterDAOImpl extends BaseDAO implements UserRegisterDAO{
 
 	@Override
 	public int addUser(User user) {

@@ -2,18 +2,23 @@ package cart.controller;
 
 import java.io.IOException;
 
-import jakarta.servlet.RequestDispatcher;
+import cart.service.ProductService;
+import cart.service.Impl.ProductServiceImpl;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/")
-public class IndexServlet extends HttpServlet{
-
+@WebServlet("/product/delete")
+public class ProductDelete extends HttpServlet{
+	private ProductService productService=new ProductServiceImpl();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("/WEB-INF/view/cart/index.jsp").forward(req, resp);
+		int productID=Integer.parseInt(req.getParameter("productID"));
+		productService.delete(productID);
+		resp.sendRedirect(req.getContextPath() + "/product/list");
 	}
+	
+	
 }

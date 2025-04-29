@@ -4,7 +4,7 @@ package cart.dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 // 用來讓不同的 xxxDao 透過 extends BaseDao 可以連接 MySQL
-public class BaseDao {
+public class BaseDAO {
   protected static Connection conn;
 	
   static {

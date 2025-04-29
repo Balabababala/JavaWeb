@@ -3,11 +3,11 @@ package cart.dao.Impl;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import cart.dao.BaseDao;
+import cart.dao.BaseDAO;
 import cart.dao.UserLoginDAO;
 import cart.model.entity.User;
 
-public class UserLoginDAOImpl extends BaseDao implements UserLoginDAO{
+public class UserLoginDAOImpl extends BaseDAO implements UserLoginDAO{
 
 	@Override
 	public User findUserByName(String username) {
