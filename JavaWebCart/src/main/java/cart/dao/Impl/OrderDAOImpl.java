@@ -33,12 +33,12 @@ public class OrderDAOImpl extends BaseDAO implements OrderDAO{
 	}
 
 	@Override
-	public void addOrderItem(Integer orderId, Integer productId, Integer qualtity) {
+	public void addOrderItem(Integer orderId, Integer productId, Integer quantity) {
 		String sql="INSERT INTO order_item(order_id,product_id,quantity) values(?,?,?)";
 		try(PreparedStatement pstmt=conn.prepareStatement(sql) ) {
 			pstmt.setInt(1, orderId);
 			pstmt.setInt(2, productId);
-			pstmt.setInt(3, qualtity);
+			pstmt.setInt(3, quantity);
 			pstmt.executeUpdate();
 			
 		} catch (Exception e) {
@@ -47,7 +47,7 @@ public class OrderDAOImpl extends BaseDAO implements OrderDAO{
 		
 		sql="UPDATE product set qty=qty - ? where product_id =?";
 		try(PreparedStatement pstmt=conn.prepareStatement(sql)) {
-			pstmt.setInt(1, orderId);
+			pstmt.setInt(1, quantity);
 			pstmt.setInt(2, productId);
 
 			pstmt.executeUpdate();
@@ -82,7 +82,7 @@ public class OrderDAOImpl extends BaseDAO implements OrderDAO{
 	}
 
 	@Override
-	public List<OrderItem> findAllOrderItemsByUserId(Integer orderId) {
+	public List<OrderItem> findAllOrderItemsByOrderId(Integer orderId) {
 		List<OrderItem> items =new ArrayList<>();
 		String sql="SELECT item_id,order_id ,product_id,quantity from order_item WHERE order_id=?";
 		try(PreparedStatement pstmt=conn.prepareStatement(sql)) {

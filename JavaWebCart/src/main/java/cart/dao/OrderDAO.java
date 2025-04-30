@@ -13,5 +13,5 @@ public interface OrderDAO {
 	//查使用者的訂單
 	List<Order> findAllOrderByUserId(Integer userId);
 	//查使用者訂單明細
-	List<OrderItem> findAllOrderItemsByUserId(Integer userId);
+	List<OrderItem> findAllOrderItemsByOrderId(Integer orderId);
 }
