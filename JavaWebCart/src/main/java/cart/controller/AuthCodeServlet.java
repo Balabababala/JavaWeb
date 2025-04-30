@@ -26,14 +26,27 @@ public class AuthCodeServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//自訂
-		String authcode = generateAuthCode();
+		String authcode = generateAuthCode2();
 		req.getSession().setAttribute("authcode", authcode);
 		ImageIO.write(getAuthCodeImage(authcode), "JPEG", resp.getOutputStream());
 		
 	}
 	
+	
 	private String generateAuthCode() {
 		String chars="0123456789zxcvbnmasdfghjklqwertyuiopZXCVBNMASDFHJKLQWERTYUIOP";
+		Random random= new Random();
+		StringBuffer authcode=new StringBuffer();
+		for(int i =0 ;i<4;i++) {
+			int index = random.nextInt(chars.length()); // 隨機取位置
+			authcode.append(chars.charAt(index)); // 取得該位置的資料
+		}
+		
+		return authcode.toString();
+	}
+	
+	private String generateAuthCode2() {
+		String chars="0";
 		Random random= new Random();
 		StringBuffer authcode=new StringBuffer();
 		for(int i =0 ;i<4;i++) {
