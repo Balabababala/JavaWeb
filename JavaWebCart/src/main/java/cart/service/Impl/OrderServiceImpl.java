@@ -20,7 +20,7 @@ public class OrderServiceImpl implements OrderService{
 		//新增訂單主檔
 		Integer orderID=orderDAO.addOrder(userId);
 		for(ProductDTO productDTO:cart) {
-			orderDAO.addOrderItem(orderID, productDTO.getProductID(), productDTO.getQty());
+			orderDAO.addOrderItem(orderID, productDTO.getProductId(), productDTO.getQty());
 		}
 	}
 	@Override

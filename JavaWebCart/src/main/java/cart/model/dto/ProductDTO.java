@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class ProductDTO {
 	//entity 資料
-	private Integer productID;
+	private Integer productId;
 	private String productName;
 	private Integer price;
 	private Integer qty;

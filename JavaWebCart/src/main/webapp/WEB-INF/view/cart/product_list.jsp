@@ -54,13 +54,13 @@
 								<!-- 商品列表 -->
 								<c:forEach var="productDTO" items="${productDTOs}">
 									<tr>
-										<td>${productDTO.productID}</td>
+										<td>${productDTO.productId}</td>
 										<td>${productDTO.productName}</td>
 										<td>${productDTO.price}</td>
 										<td>${productDTO.qty}</td>
 										<td>${productDTO.total}</td>
 										<td><img width="100" src="${empty productDTO.imageBase64 ? '' : 'data:image/png;base64,'}${productDTO.imageBase64}" /></td>
-										<td><a href="/JavaWebCart/product/delete?productID=${productDTO.productID}">X</a></td>
+										<td><a href="/JavaWebCart/product/delete?productId=${productDTO.productId}">X</a></td>
 									</tr>
 								</c:forEach>
 							</tbody>

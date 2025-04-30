@@ -17,7 +17,7 @@ public class ProductServiceImpl implements ProductService{
 		List<ProductDTO> productDTOs=productDAO.findAllProducts().stream()
 																	.map(product->{
 																		ProductDTO productDTO=new ProductDTO(); 
-																		productDTO.setProductID(product.getProductID());
+																		productDTO.setProductId(product.getProductID());
 																		productDTO.setProductName(product.getProductName());
 																		productDTO.setPrice(product.getPrice());
 																		productDTO.setQty(product.getQty());
