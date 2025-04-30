@@ -11,8 +11,7 @@ import cart.model.entity.OrderItem;
 public interface OrderService {
 		//建訂單
 		void addOrder(Integer userId,List<ProductDTO> cart);
-		//查使用者的訂單
+		//查使用者的訂單 含明細
 		List<OrderDTO> findAllOrderByUserId(Integer userId);
-		//查使用者訂單明細
-		List<OrderItemDTO> findAllOrderItemsByUserId(Integer userId);
+
 }

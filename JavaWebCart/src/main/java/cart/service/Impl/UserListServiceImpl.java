@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cart.dao.UserListDAO;
-import cart.dao.Impl.UserListDAOImpl;
-
+import cart.dao.impl.UserListDAOImpl;
 import cart.model.dto.*;
 import cart.model.entity.*;
 import cart.service.UserListService;
