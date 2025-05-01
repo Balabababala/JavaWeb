@@ -15,12 +15,11 @@ import cart.service.OrderService;
 public class OrderServiceImpl implements OrderService{
 	private OrderDAO orderDAO=new OrderDAOImpl();
 	@Override
-	public void addOrder(Integer userId, List<ProductDTO> cart) {
-		Integer quantity=1;// 固定數量
+	public void addOrder(Integer userId, List<ProductDTO> cart) {//ProductDTO 不是產品本身的 是cart 本身的
 		//新增訂單主檔
 		Integer orderID=orderDAO.addOrder(userId);
 		for(ProductDTO productDTO:cart) {
-			orderDAO.addOrderItem(orderID, productDTO.getProductId(), productDTO.getQty());
+			orderDAO.addOrderItem(orderID, productDTO.getProductId(),productDTO.getQty());
 		}
 	}
 	@Override

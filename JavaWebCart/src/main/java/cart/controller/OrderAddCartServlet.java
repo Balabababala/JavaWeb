@@ -21,7 +21,7 @@ public class OrderAddCartServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session=req.getSession();
-		
+		String quantity=req.getParameter("quantity");
 		List<ProductDTO> cart=null;
 		if(session.getAttribute("cart")==null) {
 			cart=new ArrayList<>();
@@ -40,8 +40,8 @@ public class OrderAddCartServlet extends HttpServlet{
 															.findFirst();
 		
 		if(optProductDTO.isPresent()) {
+			optProductDTO.get().setQty(Integer.parseInt(quantity));
 			cart.add(optProductDTO.get());	
-			
 			session.setAttribute("cart", cart);
 		}
 		//System.out.println(session.getAttribute("cart"));

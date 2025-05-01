@@ -27,14 +27,20 @@
                     <table class="pure-table pure-table-bordered">
                         <thead>
                             <tr>
-                                <th>刪除</th><th>Index</th><th>商品ID</th>
-                                <th>商品名稱</th><th>商品價格</th><th>商品照片</th>
+                                <th>刪除</th>
+                                <th>Index</th>
+                                <th>商品ID</th>
+                                <th>商品名稱</th>
+                                <th>商品價格</th>
+                                <th>商品數量</th>
+                                <th>商品總價</th>
+                                <th>商品照片</th>
                             </tr>
                         </thead>
                         <tbody>
                             <c:set var="total" value="0" />
                             <c:forEach var="item" items="${cart}" varStatus="status">
-                                <c:set var="total" value="${total + item.price}" />
+                                <c:set var="total" value="${total + item.price*item.qty}" />
                                 <tr onmouseover="this.style.backgroundColor='#E0E0ff'" 
                                     onmouseout="this.style.backgroundColor=''">
                                     <td>
@@ -46,6 +52,8 @@
                                     <td align="center">${item.productId}</td>
                                     <td>${item.productName}</td>
                                     <td align="right">${item.price}</td>
+                                    <td align="right">${item.qty}</td>
+                                    <td align="right">${item.qty*item.price}</td>
                                     <td>
                                         <c:choose>
                                             <c:when test="${not empty item.imageBase64}">
@@ -61,7 +69,7 @@
                             </c:forEach>
                             <!-- 總計 -->
                             <tr>
-                                <td colspan="4" align="right">總計</td>
+                                <td colspan="6" align="right">總計</td>
                                 <td align="right">${total}</td>
                                 <td align="center">
                                     <a class="pure-button pure-button-primary" href="/JavaWebCart/product/cart/submit">

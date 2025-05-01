@@ -43,15 +43,19 @@
 				<legend>商品訂單列表</legend>
 					<div class="products-container">
 						<c:forEach var="productDTO" items="${ productDTOs }">
-							<div class="product-item" onmouseover="this.style.backgroundColor='#E0E0ff'" 
-							    onmouseout="this.style.backgroundColor=''">
-								<img width="200" src='data:image/png;base64,${ productDTO.imageBase64 }'>
-								<br>
-								<p class="product-name">${ productDTO.productName }(No.${ productDTO.productId })<p>
-								<p class="product-price">$${ productDTO.price }<p />
-								庫存數量:${ productDTO.qty }<p />
-								<a class="pure-button pure-button-primary" href="/JavaWebCart/product/order/add/cart?productId=${ productDTO.productId }">加入購物車</a>
-							</div>
+							<form method="get" action="/JavaWebCart/product/order/add/cart">
+								<div class="product-item" onmouseover="this.style.backgroundColor='#E0E0ff'" 
+								    onmouseout="this.style.backgroundColor=''">
+									<img width="200" src='data:image/png;base64,${ productDTO.imageBase64 }'>
+									<br>
+									<p class="product-name">${ productDTO.productName }(No.${ productDTO.productId })<p>
+									<p class="product-price">$${ productDTO.price }<p />
+									庫存數量:${ productDTO.qty }<p />
+									<input type="number" name="quantity" min=0 max=100 />
+									<input type="hidden" name="productId" value="${productDTO.productId}" />
+									<input type="submit" name="notImportant" value="加入購物車" class="pure-button pure-button-primary" type="button" />
+								</div>						
+							</form>
 						</c:forEach>	
 					</div>
 				</table>

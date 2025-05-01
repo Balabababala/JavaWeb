@@ -10,7 +10,7 @@ import cart.model.entity.OrderItem;
 
 public interface OrderService {
 		//建訂單
-		void addOrder(Integer userId,List<ProductDTO> cart);
+		void addOrder(Integer userId,List<ProductDTO> cart);//ProductDTO 不是產品本身的 是cart 本身的
 		//查使用者的訂單 含明細
 		List<OrderDTO> findAllOrderByUserId(Integer userId);
 
