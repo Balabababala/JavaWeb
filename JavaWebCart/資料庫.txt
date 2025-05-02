@@ -39,3 +39,5 @@ create table if not exists order_item (
     FOREIGN KEY (order_id) REFERENCES `order`(order_id) ON DELETE CASCADE,
     FOREIGN KEY (product_id) REFERENCES product(product_id)
 );
+
+SELECT order_id,quantity,product_name  FROM product join cart.user join cart.order Natural join cart.order_item where username=1234;
